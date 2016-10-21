@@ -44,7 +44,7 @@ $ipn->setIPNSecret('your-secret-here');
 
 try {
     if ($ipn->validate($_POST, $_SERVER)) {
-        // Payment was successful, send the product to the user or whatever here.
+        // Payment was successful, verify vars such as the transaction ID/email and process it.
     } else {
         // IPN worked, but the payment is pending.
     }
