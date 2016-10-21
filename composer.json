@@ -1,0 +1,20 @@
+{
+    "name": "ronmelkhior/coinpayments-ipn",
+    "description": "Simple and straight forward Coinpayments IPN",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ron Melkhior",
+            "email": "ron@melkhior.io"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "RonMelkhior\\CoinpaymentsIPN\\": "src/RonMelkhior/CoinpaymentsIPN"
+        }
+    },
+    "require": {
+        "php": ">=5.6.4"
+    }
+}
