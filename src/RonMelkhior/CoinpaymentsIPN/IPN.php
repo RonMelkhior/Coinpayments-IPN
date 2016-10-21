@@ -33,7 +33,7 @@ class IPN
 
         if ($order_status < 0) {
             throw new FailedPaymentException("{$order_status}: {$order_status_text}");
-        } else if ($order_status >= 0 && $order_status < 100 && $order_status != 2) {
+        } elseif ($order_status >= 0 && $order_status < 100 && $order_status != 2) {
             return false;
         }
 
