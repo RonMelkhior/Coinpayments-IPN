@@ -5,6 +5,7 @@ namespace RonMelkhior\CoinpaymentsIPN;
 use RonMelkhior\CoinpaymentsIPN\Initialize;
 use RonMelkhior\CoinpaymentsIPN\Exceptions\InvalidRequestException;
 use RonMelkhior\CoinpaymentsIPN\Exceptions\InvalidDataException;
+use RonMelkhior\CoinpaymentsIPN\Exceptions\FailedPaymentException;
 
 class IPN
 {
