@@ -8,7 +8,13 @@ At the moment, this package only supports the HTTP Auth IPN method in Coinpaymen
 
 # Usage
 
-First of all, install the package via Composer, then add in the IPN to your code like so:
+First of all, install the package via Composer:
+
+```sh
+composer require ronmelkhior/coinpayments-ipn
+```
+
+Then add in the IPN to your code like so:
 
 ```php
 <?php
