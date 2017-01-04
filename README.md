@@ -32,8 +32,8 @@ Once you initialize the `IPN` class, you need to setup the merchant ID & IPN sec
 use RonMelkhior\CoinpaymentsIPN\IPN;
 
 $ipn = new IPN();
-$ipn->setMerchantID('your-id-here');
-$ipn->setIPNSecret('your-secret-here');
+$ipn->setMerchantID('your-id-here')
+    ->setIPNSecret('your-secret-here');
 ```
 
 Then, you can validate the IPN with the `validate` method, which you need to provide your `$_POST` and `$_SERVER` arrays to.
@@ -45,8 +45,8 @@ Then, you can validate the IPN with the `validate` method, which you need to pro
 use RonMelkhior\CoinpaymentsIPN\IPN;
 
 $ipn = new IPN();
-$ipn->setMerchantID('your-id-here');
-$ipn->setIPNSecret('your-secret-here');
+$ipn->setMerchantID('your-id-here')
+    ->setIPNSecret('your-secret-here');
 
 try {
     if ($ipn->validate($_POST, $_SERVER)) {
