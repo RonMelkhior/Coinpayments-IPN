@@ -11,6 +11,13 @@ class IPN
 {
     use Initialize;
 
+    /**
+     * Validate the IPN request and payment.
+     *
+     * @param  array  $post_data
+     * @param  array  $server_data
+     * @return mixed
+     */
     public function validate(array $post_data, array $server_data)
     {
         if (!isset($post_data['ipn_mode'], $post_data['merchant'], $post_data['status'], $post_data['status_text'])) {
