@@ -56,7 +56,7 @@ try {
     }
 } catch (RonMelkhior\CoinpaymentsIPN\Exceptions\InvalidRequestException $e) {
     // The IPN data was not valid to begin with (missing data, invalid IPN method).
-} catch (RonMelkhior\CoinpaymentsIPN\Exceptions\InvalidDataException $e) {
+} catch (RonMelkhior\CoinpaymentsIPN\Exceptions\InsufficientDataException $e) {
     // Sufficient data provided, but either the merchant ID or the IPN secret didn't match.
 } catch (RonMelkhior\CoinpaymentsIPN\Exceptions\FailedPaymentException $e) {
     // IPN worked, but the payment has failed (PayPal refund/cancelled/timed out).

@@ -4,7 +4,7 @@ namespace RonMelkhior\CoinpaymentsIPN;
 
 use RonMelkhior\CoinpaymentsIPN\Initialize;
 use RonMelkhior\CoinpaymentsIPN\Exceptions\InvalidRequestException;
-use RonMelkhior\CoinpaymentsIPN\Exceptions\InvalidDataException;
+use RonMelkhior\CoinpaymentsIPN\Exceptions\InsufficientDataException;
 use RonMelkhior\CoinpaymentsIPN\Exceptions\FailedPaymentException;
 
 class IPN
@@ -29,11 +29,11 @@ class IPN
         }
 
         if ($server_data['PHP_AUTH_USER'] !== $this->merchant_id) {
-            throw new InvalidDataException("Invalid merchant ID provided.");
+            throw new InsufficientDataException("Invalid merchant ID provided.");
         }
 
         if ($server_data['PHP_AUTH_PW'] !== $this->ipn_secret) {
-            throw new InvalidDataException("Invalid IPN secret provided.");
+            throw new InsufficientDataException("Invalid IPN secret provided.");
         }
 
         $order_status = $post_data['status'];
