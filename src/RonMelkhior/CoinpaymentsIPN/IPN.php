@@ -32,10 +32,10 @@ class IPN
             if ($server_data['PHP_AUTH_PW'] !== $this->ipn_secret) {
                 throw new InsufficientDataException("Invalid IPN secret provided.");
             }
-        } else if ($post_data['ipn_mode'] == 'hmac') {
+        } elseif ($post_data['ipn_mode'] == 'hmac') {
             $hmac = hash_hmac("sha512", file_get_contents('php://input'), $this->ipn_secret);
             
-            if($hmac !== $server_data['HTTP_HMAC']) {
+            if ($hmac !== $server_data['HTTP_HMAC']) {
                 throw new InsufficientDataException("Invalid HMAC provided.");
             }
 
