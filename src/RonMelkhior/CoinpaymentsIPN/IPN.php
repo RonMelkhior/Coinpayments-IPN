@@ -24,17 +24,28 @@ class IPN
             throw new InvalidRequestException("Insufficient POST data provided.");
         }
 
-        if ($post_data['ipn_mode'] !== 'httpauth') {
+        if ($post_data['ipn_mode'] == 'httpauth') {
+            if ($server_data['PHP_AUTH_USER'] !== $this->merchant_id) {
+                throw new InsufficientDataException("Invalid merchant ID provided.");
+            }
+    
+            if ($server_data['PHP_AUTH_PW'] !== $this->ipn_secret) {
+                throw new InsufficientDataException("Invalid IPN secret provided.");
+            }
+        } elseif ($post_data['ipn_mode'] == 'hmac') {
+            $hmac = hash_hmac("sha512", file_get_contents('php://input'), $this->ipn_secret);
+            
+            if ($hmac !== $server_data['HTTP_HMAC']) {
+                throw new InsufficientDataException("Invalid HMAC provided.");
+            }
+
+            if ($post_data['merchant'] !== $this->merchant_id) {
+                throw new InsufficientDataException("Invalid merchant ID provided.");
+            }
+        } else {
             throw new InvalidRequestException("Invalid IPN mode provided.");
         }
 
-        if ($server_data['PHP_AUTH_USER'] !== $this->merchant_id) {
-            throw new InsufficientDataException("Invalid merchant ID provided.");
-        }
-
-        if ($server_data['PHP_AUTH_PW'] !== $this->ipn_secret) {
-            throw new InsufficientDataException("Invalid IPN secret provided.");
-        }
 
         $order_status = $post_data['status'];
         $order_status_text = $post_data['status_text'];
