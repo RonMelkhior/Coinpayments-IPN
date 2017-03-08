@@ -1,6 +1,6 @@
 <?php
 
-namespace RonMelkhior\CoinpaymentsIPN\Exception;
+namespace RonMelkhior\CoinpaymentsIPN\Exceptions;
 
 class InsufficientDataException extends \Exception
 {
